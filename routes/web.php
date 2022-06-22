@@ -23,4 +23,6 @@ Route::get('/produtos/novo', [ProdutosController::class, 'create']);
 
 Route::post('/produtos', [ProdutosController::class,'store']);
 
+Route::get('/produtos/exibir', [ProdutosController::class,'show']);
 
+Route::get('/produtos/{id}/edit', [ProdutosController::class,'edit']);

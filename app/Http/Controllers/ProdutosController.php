@@ -29,12 +29,15 @@ class ProdutosController extends Controller
 
     public function show()
     {
+        $produtos = Produto::get();
+        return view('produtos.list', ['produtos' => $produtos]);
 
     }
 
-    public function edit()
+    public function edit( $id)
     {
-
+       
+        return view('produtos.create');
     }
 
     public function update()

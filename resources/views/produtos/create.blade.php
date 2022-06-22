@@ -1,4 +1,4 @@
-@extends('layout.layout')
+@extends('layouts.layout')
 
 @section('titulo','Cadastro de Produtos')
 
@@ -7,6 +7,7 @@
 
 <header>
     <h2>Cadastro de Produtos</h2>
+    <a href="{{ url('produtos/exibir') }}"><button>Ver produtos</button></a></p>
 </header>
 
 <body>
@@ -14,7 +15,9 @@
         {{@Session::get('success')}}
     @endif
 
+    @if ( Request::is('*/edit'))
 
+    @endif
     <form action="/produtos" method="POST">
         @csrf
         <label for="nome">
