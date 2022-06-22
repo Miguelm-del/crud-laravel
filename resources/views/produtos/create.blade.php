@@ -15,9 +15,33 @@
         {{@Session::get('success')}}
     @endif
 
+
     @if ( Request::is('*/edit'))
 
-    @endif
+    <a href="{{ url('produtos/exibir')}}">Voltar</a>
+    <form action="/produtos/update/{{$produto->id}}" method="POST">
+        @csrf
+        <label for="nome">
+            Nome
+        </label>
+        <input type="text" name="nome" id="nome" value="{{ $produto->nome}}">
+        <label for="preco">
+            Preco
+        </label>
+        <input type="number" name="preco" id="preco" min="1" value="{{ $produto->preco}}">
+        <label for="custo">
+            Custo
+        </label>
+        <input type="number" name="custo" id="custo" min="0" value="{{ $produto->custo}}">
+        <label for="quantidade">
+            Quantidade
+        </label>
+        <input type="number" name="quantidade" id="quantidade" min="1" value="{{ $produto->quantidade}}">
+
+        <input type="submit" value="Atualizar">
+    </form>
+
+    @else
     <form action="/produtos" method="POST">
         @csrf
         <label for="nome">
@@ -39,5 +63,24 @@
 
         <input type="submit" value="Cadastrar">
     </form>
+
+    @endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @endsection

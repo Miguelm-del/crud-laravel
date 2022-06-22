@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ProdutosController extends Controller
 {
@@ -36,12 +37,15 @@ class ProdutosController extends Controller
 
     public function edit( $id)
     {
-       
-        return view('produtos.create');
+        $produto = Produto::findOrFail( $id);
+        return view('produtos.create', ['produto' => $produto]);
     }
 
-    public function update()
+    public function update($id, Request $request)
     {
+        $produto = Produto::findOrFail( $id);
+        $produto->update($request->all());
+        return Redirect::to('/produtos/exibir');
 
     }
 
