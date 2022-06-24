@@ -27,4 +27,6 @@ Route::get('/produtos/exibir', [ProdutosController::class,'show']);
 
 Route::get('produtos/{id}/edit', [ProdutosController::class,'edit']);
 
-Route::post('produtos/update/{id}', [ProdutosController::class,'update']);
+Route::post('/produtos/update/{id}', [ProdutosController::class,'update']);
+
+Route::delete('/produtos/destroy/{id}', [ProdutosController::class,'destroy']);

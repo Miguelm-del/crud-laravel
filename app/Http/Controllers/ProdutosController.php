@@ -49,8 +49,11 @@ class ProdutosController extends Controller
 
     }
 
-    public function destroy()
+    public function destroy( $id )
     {
+        $produto = Produto::findOrFail( $id);
+        $produto->delete();
+        return Redirect::to('/produtos/exibir');
 
     }
 

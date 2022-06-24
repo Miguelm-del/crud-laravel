@@ -12,6 +12,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th scope="col">Codigo</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Preco</th>
                 <th scope="col">Custo</th>
@@ -24,15 +25,20 @@
         <tbody>
             @foreach ($produtos as $produto)
             <tr>
-                <td>{{ $produto->nome}}</td>
-                <td>{{ $produto->preco}}</td>
-                <td>{{ $produto->custo}}</td>
-                <td>{{ $produto->quantidade}}</td>
+                <td>{{ $produto->id }}</td>
+                <td>{{ $produto->nome }}</td>
+                <td>{{ $produto->preco }}</td>
+                <td>{{ $produto->custo }}</td>
+                <td>{{ $produto->quantidade }}</td>
                 <td>
-                    <a href="produtos/{{ $produto->id }}/edit" class="edit">Editar</a>
+                    <a href="/produtos/{{ $produto->id }}/edit" class="edit">Editar</a>
                 </td>
                 <td>
-                    <a href="{{ url('produtos/destroy') }}" class="delete">Deletar</a>
+                    <form action="/produtos/destroy/{{ $produto->id }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="destroy">Deletar</button>
+                    </form>
                 </td>
             </tr>
         </tbody>
